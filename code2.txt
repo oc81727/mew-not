@@ -1,0 +1,2015 @@
+%zero_char 3135
+%one_char 1030
+%two_char 219
+%three_char 207
+%four_char 230
+%five_char 237
+%six_char 253
+%seven_char 3073
+%eight_char 255
+%nine_char 239
+
+;a 247
+;b 4751
+;c 57
+;d 4623
+;e 249
+;f 241
+;g 189
+;h 246
+;i 4617
+;j 30
+;k 9328
+;l 56
+;m 1334
+;n 8502
+;o 63
+;p 243
+;q 8255
+;r 8435
+;s 397
+;t 4609
+;u 62
+;v 3120
+;w 10294
+;x 11520
+;y 5376
+;z 3081
+;exclam 16390
+;space 0
+;zero 3135
+
+%char_a 247
+%char_b 4751
+%char_c 57
+%char_d 4623
+%char_e 249
+%char_f 241
+%char_g 189
+%char_h 246
+%char_i 4617
+%char_j 30
+%char_k 9328
+%char_l 56
+%char_m 1334
+%char_n 8502
+%char_o 63
+%char_p 243
+%char_q 8255
+%char_r 8435
+%char_s 397
+%char_t 4609
+%char_u 62
+%char_v 3120
+%char_w 10294
+%char_x 11520
+%char_y 5376
+%char_z 3081
+
+
+?digit0 ff5
+?digit1 ff6
+?digit2 ff7
+?digit3 ff8
+?digit4 ff9
+?digit5 ffa
+
+?buzzer ffd
+?buzzerbusy ff3
+
+?keypad ff2
+
+[
+print_controls
+:print_c_for_controls
+:print_b_control
+:print_a_control
+:print_f_control
+:print_e_control
+
+
+]
+
+[
+print_a_control
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 16
+^c_0 ;a
+^c_1 ;space
+^c_2 ;t
+^c_3 ;o
+^c_4 ;space
+^c_5 ;c
+^c_6 ;o
+^c_7 ;n
+^c_8 ;f
+^c_9 ;i
+^c_10 ;r
+^c_11 ;m
+^c_12 ;space
+^c_13 ;b
+^c_14 ;e
+^c_15 ;t
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+if ^progress == 9
+^char0 = ^c_9
+goto train_end
+endif
+if ^progress == 10
+^char0 = ^c_10
+goto train_end
+endif
+if ^progress == 11
+^char0 = ^c_11
+goto train_end
+endif
+if ^progress == 12
+^char0 = ^c_12
+goto train_end
+endif
+if ^progress == 13
+^char0 = ^c_13
+goto train_end
+endif
+if ^progress == 14
+^char0 = ^c_14
+goto train_end
+endif
+if ^progress == 15
+^char0 = ^c_15
+goto train_end
+endif
+
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+
+[
+print_e_control
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 10
+^c_0 ;e
+^c_1 ;space
+^c_2 ;t
+^c_3 ;o
+^c_4 ;space
+^c_5 ;s
+^c_6 ;t
+^c_7 ;a
+^c_8 ;n
+^c_9 ;d
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+if ^progress == 9
+^char0 = ^c_9
+goto train_end
+endif
+
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+
+[
+print_f_control
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 8
+^c_0 ;f
+^c_1 ;space
+^c_2 ;t
+^c_3 ;o
+^c_4 ;space
+^c_5 ;h
+^c_6 ;i
+^c_7 ;t
+
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+
+
+
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+
+
+[
+print_b_control
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 14
+^c_0 ;b
+^c_1 ;space
+^c_2 ;t
+^c_3 ;o
+^c_4 ;space
+^c_5 ;p
+^c_6 ;l
+^c_7 ;a
+^c_8 ;c
+^c_9 ;e
+^c_10 ;space
+^c_11 ;b
+^c_12 ;e
+^c_13 ;t
+
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+if ^progress == 9
+^char0 = ^c_9
+goto train_end
+endif
+if ^progress == 10
+^char0 = ^c_10
+goto train_end
+endif
+if ^progress == 11
+^char0 = ^c_11
+goto train_end
+endif
+if ^progress == 12
+^char0 = ^c_12
+goto train_end
+endif
+if ^progress == 13
+^char0 = ^c_13
+goto train_end
+endif
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+]
+
+
+[
+write_money_value
+
+@display_num_num = @money
+:display_num
+
+]
+
+[
+write_nuh_uh
+@char_n => ?digit5
+@char_u => ?digit4
+@char_h => ?digit3
+@zero => ?digit2
+@char_u => ?digit1
+@char_h => ?digit0
+:wait
+:wait
+:wait
+]
+
+[
+write_dealer
+@char_d => ?digit5
+@char_e => ?digit4
+@char_a => ?digit3
+@char_l => ?digit2
+@char_e => ?digit1
+@char_r => ?digit0
+]
+
+[
+write_got
+@zero => ?digit5
+@zero => ?digit4
+@zero => ?digit3
+@char_g => ?digit2
+@char_o => ?digit1
+@char_t => ?digit0
+]
+
+[
+write_you
+@zero => ?digit5
+@zero => ?digit4
+@zero => ?digit3
+@char_g => ?digit2
+@char_o => ?digit1
+@char_t => ?digit0
+]
+
+[
+write_money_text
+@zero => ?digit5
+@char_m => ?digit4
+@char_o => ?digit3
+@char_n => ?digit2
+@char_e => ?digit1
+@char_y => ?digit0
+
+]
+
+[
+print_c_for_controls
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 21
+^c_0 ;p
+^c_1 ;r
+^c_2 ;e
+^c_3 ;s
+^c_4 ;s
+^c_5 ;space
+^c_6 ;c
+^c_7 ;space
+^c_8 ;f
+^c_9 ;o
+^c_10 ;r
+^c_11 ;space
+^c_12 ;c
+^c_13 ;o
+^c_14 ;n
+^c_15 ;t
+^c_16 ;r
+^c_17 ;o
+^c_18 ;l
+^c_19 ;l
+^c_20 ;s
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+if ^progress == 9
+^char0 = ^c_9
+goto train_end
+endif
+if ^progress == 10
+^char0 = ^c_10
+goto train_end
+endif
+if ^progress == 11
+^char0 = ^c_11
+goto train_end
+endif
+if ^progress == 12
+^char0 = ^c_12
+goto train_end
+endif
+if ^progress == 13
+^char0 = ^c_13
+goto train_end
+endif
+if ^progress == 14
+^char0 = ^c_14
+goto train_end
+endif
+if ^progress == 15
+^char0 = ^c_15
+goto train_end
+endif
+if ^progress == 16
+^char0 = ^c_16
+goto train_end
+endif
+if ^progress == 17
+^char0 = ^c_17
+goto train_end
+endif
+if ^progress == 18
+^char0 = ^c_18
+goto train_end
+endif
+if ^progress == 19
+^char0 = ^c_19
+goto train_end
+endif
+if ^progress == 20
+^char0 = ^c_20
+goto train_end
+endif
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+
+[
+print_dealers_turn
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 12
+^c_0 ;d
+^c_1 ;e
+^c_2 ;a
+^c_3 ;l
+^c_4 ;e
+^c_5 ;r
+^c_6 ;s
+^c_7 ;space
+^c_8 ;t
+^c_9 ;u
+^c_10 ;r
+^c_11 ;n
+
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+if ^progress == 9
+^char0 = ^c_9
+goto train_end
+endif
+if ^progress == 10
+^char0 = ^c_10
+goto train_end
+endif
+if ^progress == 11
+^char0 = ^c_11
+goto train_end
+endif
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+[
+print_your_turn
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 9
+^c_0 ;y
+^c_1 ;o
+^c_2 ;u
+^c_3 ;r
+^c_4 ;space
+^c_5 ;t
+^c_6 ;u
+^c_7 ;r
+^c_8 ;n
+
+
+
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+
+
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+
+
+[
+print_welcome
+^maxProgress
+^progress
+
+^char0
+^char1
+^char2
+^char3
+^char4
+^char5
+
+^length 26
+^c_0 ;w
+^c_1 ;e
+^c_2 ;l
+^c_3 ;c
+^c_4 ;o
+^c_5 ;m
+^c_6 ;e
+^c_7 ;exclam
+^c_8 ;space
+^c_9 ;p
+^c_10 ;r
+^c_11 ;e
+^c_12 ;s
+^c_13 ;s
+^c_14 ;space
+^c_15 ;zero
+^c_16 ;space
+^c_17 ;t
+^c_18 ;o
+^c_19 ;space
+^c_20 ;b
+^c_21 ;e
+^c_22 ;g
+^c_23 ;i
+^c_24 ;n
+^c_25 ;exclam
+
+
+
+
+^char0 = 0
+^char1 = 0
+^char2 = 0
+^char3 = 0
+^char4 = 0
+^char5 = 0
+^progress = 0
+
+^maxProgress = ^length + 6
+
+~ train
+
+^char5 = ^char4
+^char4 = ^char3
+^char3 = ^char2
+^char2 = ^char1
+^char1 = ^char0
+
+if ^progress == 0
+^char0 = ^c_0
+goto train_end
+endif
+if ^progress == 1
+^char0 = ^c_1
+goto train_end
+endif
+if ^progress == 2
+^char0 = ^c_2
+goto train_end
+endif
+if ^progress == 3
+^char0 = ^c_3
+goto train_end
+endif
+if ^progress == 4
+^char0 = ^c_4
+goto train_end
+endif
+if ^progress == 5
+^char0 = ^c_5
+goto train_end
+endif
+if ^progress == 6
+^char0 = ^c_6
+goto train_end
+endif
+if ^progress == 7
+^char0 = ^c_7
+goto train_end
+endif
+if ^progress == 8
+^char0 = ^c_8
+goto train_end
+endif
+if ^progress == 9
+^char0 = ^c_9
+goto train_end
+endif
+if ^progress == 10
+^char0 = ^c_10
+goto train_end
+endif
+if ^progress == 11
+^char0 = ^c_11
+goto train_end
+endif
+if ^progress == 12
+^char0 = ^c_12
+goto train_end
+endif
+if ^progress == 13
+^char0 = ^c_13
+goto train_end
+endif
+if ^progress == 14
+^char0 = ^c_14
+goto train_end
+endif
+if ^progress == 15
+^char0 = ^c_15
+goto train_end
+endif
+if ^progress == 16
+^char0 = ^c_16
+goto train_end
+endif
+if ^progress == 17
+^char0 = ^c_17
+goto train_end
+endif
+if ^progress == 18
+^char0 = ^c_18
+goto train_end
+endif
+if ^progress == 19
+^char0 = ^c_19
+goto train_end
+endif
+if ^progress == 20
+^char0 = ^c_20
+goto train_end
+endif
+if ^progress == 21
+^char0 = ^c_21
+goto train_end
+endif
+if ^progress == 22
+^char0 = ^c_22
+goto train_end
+endif
+if ^progress == 23
+^char0 = ^c_23
+goto train_end
+endif
+if ^progress == 24
+^char0 = ^c_24
+goto train_end
+endif
+if ^progress == 25
+^char0 = ^c_25
+goto train_end
+endif
+^char0 = 0
+
+
+~ train_end
+
+^char5 => ?digit5
+^char4 => ?digit4
+^char3 => ?digit3
+^char2 => ?digit2
+^char1 => ?digit1
+^char0 => ?digit0
+
+
+
+:wait_half
+:wait_half
+^progress = ^progress + 1
+if ^progress != ^maxProgress
+goto train
+endif
+
+
+
+
+]
+
+[
+halve
+^num
+^out
+^count
+
+^count = 0
+^out = 0
+~ start
+^count = ^count + 2
+^out = ^out + 1
+if ^count >= ^num
+goto end
+endif
+goto start
+~ end
+
+]
+
+
+
+[
+get_keypad
+^copy
+^0
+^1
+^2
+^3
+^4
+^5
+^6
+^7
+^8
+^9
+^a
+^b
+^c
+^d
+^e
+^f
+^copy <= ?keypad
+
+if ^copy < 0
+^f = 1
+^copy = ^copy + 32768
+goto yes_f
+endif
+^f = 0
+~ yes_f
+
+if ^copy < 16384
+^e = 0
+goto no_e
+endif
+^e = 1
+^copy = ^copy - 16384
+~ no_e
+
+if ^copy < 8192
+^d = 0
+goto no_d
+endif
+^d = 1
+^copy = ^copy - 8192
+~ no_d
+
+if ^copy < 4096
+^c = 0
+goto no_c
+endif
+^c = 1
+^copy = ^copy - 4096
+~ no_c
+
+if ^copy < 2048
+^b = 0
+goto no_b
+endif
+^b = 1
+^copy = ^copy - 2048
+~ no_b
+
+if ^copy < 1024
+^a = 0
+goto no_a
+endif
+^a = 1
+^copy = ^copy - 1024
+~ no_a
+
+if ^copy < 512
+^9 = 0
+goto no_9
+endif
+^9 = 1
+^copy = ^copy - 512
+~ no_9
+
+if ^copy < 256
+^8 = 0
+goto no_8
+endif
+^8 = 1
+^copy = ^copy - 256
+~ no_8
+
+if ^copy < 128
+^7 = 0
+goto no_7
+endif
+^7 = 1
+^copy = ^copy - 128
+~ no_7
+
+if ^copy < 64
+^6 = 0
+goto no_6
+endif
+^6 = 1
+^copy = ^copy - 64
+~ no_6
+
+if ^copy < 32
+^5 = 0
+goto no_5
+endif
+^5 = 1
+^copy = ^copy - 32
+~ no_5
+
+if ^copy < 16
+^4 = 0
+goto no_4
+endif
+^4 = 1
+^copy = ^copy - 16
+~ no_4
+
+if ^copy < 8
+^3 = 0
+goto no_3
+endif
+^3 = 1
+^copy = ^copy - 8
+~ no_3
+
+if ^copy < 4
+^2 = 0
+goto no_2
+endif
+^2 = 1
+^copy = ^copy - 4
+~ no_2
+
+if ^copy < 2
+^1 = 0
+goto no_1
+endif
+^1 = 1
+^copy = ^copy - 2
+~ no_1
+
+if ^copy < 1
+^0 = 0
+goto no_0
+endif
+^0 = 1
+^copy = ^copy - 1
+~ no_0
+
+
+
+
+]
+
+
+
+
+[
+time1sec
+^count
+
+@one_sec_beep => ?buzzer
+~ startCount
+if ?buzzerbusy == 1
+^count = ^count + 1
+goto startCount
+endif
+
+
+
+
+]
+
+[
+wait
+^sec
+^temp
+^counts
+
+^temp = ^sec
+^counts = 0
+~ mult
+
+if ^temp > 0
+^temp = ^temp - 1
+^counts = ^counts + @time1sec_count
+goto mult
+endif
+
+
+
+~ looping
+if ^counts > 0
+^counts = ^counts - 1
+goto looping
+endif
+
+]
+
+
+[
+wait_half_init
+^counts
+^hh
+^counts = @time1sec_count
+
+
+
+
+]
+
+[
+wait_half
+^counts
+
+^counts = @wait_half_init_counts
+
+~ looping
+if ^counts > 0
+^counts = ^counts - 1
+goto looping
+endif
+
+]
+
+
+
+[
+digit
+^num
+^out
+if ^num == 0
+    ^out = @zero_char
+    goto end
+endif
+if ^num == 1
+    ^out = @one_char
+    goto end
+endif
+if ^num == 2
+    ^out = @two_char
+    goto end
+endif
+if ^num == 3
+    ^out = @three_char
+    goto end
+endif
+if ^num == 4
+    ^out = @four_char
+    goto end
+endif
+if ^num == 5
+    ^out = @five_char
+    goto end
+endif
+if ^num == 6
+    ^out = @six_char
+    goto end
+endif
+if ^num == 7
+    ^out = @seven_char
+    goto end
+endif
+if ^num == 8
+    ^out = @eight_char
+    goto end
+endif
+if ^num == 9
+    ^out = @nine_char
+    goto end
+endif
+
+~ end
+]
+[
+display_num
+^num
+^copy
+^copy = ^num
+^10ks
+^1ks
+^hs
+^ts
+^10kprinted
+^1kprinted
+^hprinted
+
+
+^10kprinted = 0
+^1kprinted = 0
+^hprinted = 0
+
+
+^10ks = 0
+^1ks = 0
+^hs = 0
+^ts = 0
+@zero => ?digit4
+@zero => ?digit3
+@zero => ?digit2
+@zero => ?digit1
+@zero => ?digit0
+if ^copy > 9999
+    ~ 10kloop
+    ^10ks = ^10ks + 1
+    ^copy = ^copy - 10000
+    if ^copy >= 10000
+        goto 10kloop
+    endif
+@digit_num = ^10ks
+:digit
+@digit_out => ?digit4
+^10kprinted = 1
+
+endif
+
+if ^10kprinted == 1
+@zero_char => ?digit3
+^1kprinted = 1
+endif
+if ^copy > 999
+    ~ 1kloop
+    ^1ks = ^1ks + 1
+    ^copy = ^copy - 1000
+    if ^copy >= 1000
+        goto 1kloop
+    endif
+@digit_num = ^1ks
+:digit
+@digit_out => ?digit3
+^1kprinted = 1
+endif
+
+if ^1kprinted == 1
+@zero_char => ?digit2
+^hprinted = 1
+endif
+
+if ^copy > 99
+    ~ hsloop
+    ^hs = ^hs + 1
+    ^copy = ^copy - 100
+    if ^copy >= 100
+        goto hsloop
+    endif
+@digit_num = ^hs
+:digit
+@digit_out => ?digit2
+^hprinted = 1
+endif
+
+if ^hprinted == 1
+@zero_char => ?digit1
+endif
+
+if ^copy > 9
+    ~ tsloop
+    ^ts = ^ts + 1
+    ^copy = ^copy - 10
+    if ^copy >= 10
+        goto tsloop
+    endif
+
+
+
+@digit_num = ^ts
+:digit
+@digit_out => ?digit1
+
+endif
+
+@digit_num = ^copy
+:digit
+@digit_out => ?digit0
+
+
+
+]
+
+[
+random
+^max
+^out
+
+^out = @randseed1 + @randseed2
+~ modloop
+if ^out > ^max
+^out = ^out - ^max
+goto modloop
+endif
+@randseed1 = @randseed2
+@randseed2 = ^out
+
+
+]
+
+%randseed1 676
+%randseed2 4200
+
+
+[
+multiply
+^v1
+^v2
+^v2_copy
+^out
+^out = 0
+^v2_copy = ^v2
+~ start
+if ^v2_copy > 0
+^out = ^out + ^v1
+^v2_copy = ^v2_copy - 1
+goto start
+endif
+
+
+]
+
+[
+write_enter
+@zero => ?digit5
+@char_e => ?digit4
+@char_n => ?digit3
+@char_t => ?digit2
+@char_e => ?digit1
+@char_r => ?digit0
+
+]
+
+[
+write_num
+@zero => ?digit5
+@zero => ?digit4
+@zero => ?digit3
+@char_n => ?digit2
+@char_u => ?digit1
+@char_m => ?digit0
+]
+
+
+[
+place_bet
+^entered_characters
+^bet
+^prev_press_0
+^prev_press_1
+^prev_press_2
+^prev_press_3
+^prev_press_4
+^prev_press_5
+^prev_press_6
+^prev_press_7
+^prev_press_8
+^prev_press_9
+
+~ start
+^bet = 0
+^entered_characters = 0
+
+:write_enter
+:wait
+:wait_half
+:wait_half
+:write_num
+
+@multiply_v2 = 10
+
+~ type_loop
+:get_keypad
+if @get_keypad_0 == 1
+
+if ^prev_press_0 == 1
+goto nothing_pressed
+endif
+
+if ^entered_characters == 0
+goto type_loop
+endif
+@multiply_v1 = ^bet
+@multiply_v2 = 10
+:multiply
+^bet = @multiply_out
+goto type_add
+endif
+
+if @get_keypad_1 == 1
+
+if ^prev_press_1 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 1
+goto type_add
+endif
+
+if @get_keypad_2 == 1
+
+if ^prev_press_2 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 2
+goto type_add
+endif
+
+if @get_keypad_3 == 1
+
+if ^prev_press_3 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 3
+goto type_add
+endif
+
+if @get_keypad_4 == 1
+
+if ^prev_press_4 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 4
+goto type_add
+endif
+
+if @get_keypad_5 == 1
+
+if ^prev_press_5 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 5
+goto type_add
+endif
+
+if @get_keypad_6 == 1
+
+if ^prev_press_6 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 6
+goto type_add
+endif
+
+if @get_keypad_7 == 1
+
+if ^prev_press_7 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 7
+goto type_add
+endif
+
+if @get_keypad_8 == 1
+
+if ^prev_press_8 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 8
+goto type_add
+endif
+
+if @get_keypad_9 == 1
+
+if ^prev_press_9 == 1
+goto nothing_pressed
+endif
+
+@multiply_v1 = ^bet
+:multiply
+^bet = @multiply_out
+^bet = ^bet + 9
+goto type_add
+endif
+
+goto nothing_pressed
+
+~ type_add
+
+
+^entered_characters = ^entered_characters + 1
+if ^entered_characters > 5
+:write_nuh_uh
+goto start
+endif
+
+if ^bet > @money
+:write_nuh_uh
+goto start
+endif
+
+@display_num_num = ^bet
+:display_num
+
+~ nothing_pressed
+
+
+^prev_press_0 = @get_keypad_0
+^prev_press_1 = @get_keypad_1
+^prev_press_2 = @get_keypad_2
+^prev_press_3 = @get_keypad_3
+^prev_press_4 = @get_keypad_4
+^prev_press_5 = @get_keypad_5
+^prev_press_6 = @get_keypad_6
+^prev_press_7 = @get_keypad_7
+^prev_press_8 = @get_keypad_8
+^prev_press_9 = @get_keypad_9
+
+
+if @get_keypad_a == 0
+goto type_loop
+endif
+
+@bet = ^bet
+@money = @money - ^bet
+
+
+]
+
+
+
+@wait_sec = 2
+@random_max = 10000
+
+
+
+:time1sec
+:wait_half_init
+@randseed1 = @randseed1 + @time1sec_count
+
+:print_welcome
+
+
+~ wait_for_start
+:get_keypad
+if @get_keypad_0 == 1
+goto starting
+endif
+goto wait_for_start
+~ starting
+
+:print_c_for_controls
+
+%wait_start_loop_pause
+~ wait_start_loop
+@wait_start_loop_pause = 5
+
+:write_money_text
+~ wait_start_loop_1
+:wait_half
+:wait_half
+:get_keypad
+if @get_keypad_c == 1
+:print_controls
+endif
+if @get_keypad_b == 1
+:place_bet
+
+
+
+:print_dealers_turn
+:write_dealer
+:wait
+:wait
+:write_got
+:wait
+:wait
+
+
+:print_your_turn
+:write_you
+:wait
+:wait
+:write_got
+:wait
+:wait
+
+
+
+
+
+
+endif
+@wait_start_loop_pause = @wait_start_loop_pause - 1
+
+if @wait_start_loop_pause > 0
+goto wait_start_loop_1
+endif
+
+@wait_start_loop_pause = 5
+:write_money_value
+~ wait_start_loop_2
+:wait_half
+:wait_half
+:get_keypad
+if @get_keypad_c == 1
+:print_controls
+endif
+if @get_keypad_b == 1
+:place_bet
+endif
+@wait_start_loop_pause = @wait_start_loop_pause - 1
+if @wait_start_loop_pause > 0
+goto wait_start_loop_2
+endif
+
+goto wait_start_loop
+
+
+
+
+~ mainloop
+:random
+@display_num_num = @random_out
+:display_num
+:wait
+goto mainloop
+
+
+%money 100
+%bet
+%one_sec_beep 35392
+
+

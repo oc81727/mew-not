@@ -1,0 +1,282 @@
+%zero_char 3135
+%one_char 1030
+%two_char 219
+%three_char 207
+%four_char 230
+%five_char 237
+%six_char 253
+%seven_char 3073
+%eight_char 255
+%nine_char 239
+
+%a_char 247
+%b_char 4751
+%c_char 57
+%d_char 4623
+%e_char 249
+%f_char 241
+%g_char 189
+%h_char 246
+%i_char 4617
+%j_char 30
+%k_char 9328
+%l_char 56
+%m_char 1334
+%n_char 8502
+%o_char 63
+%p_char 243
+%q_char 8255
+%r_char 8435
+%s_char 397
+%t_char 4609
+%u_char 62
+%v_char 3120
+%w_char 10294
+%x_char 11520
+%y_char 5376
+%z_char 3081
+
+
+
+
+
+?digit0 ff5
+?digit1 ff6
+?digit2 ff7
+?digit3 ff8
+?digit4 ff9
+?digit5 ffa
+
+?buzzer ffd
+?buzzerbusy ff3
+
+
+[
+time1sec
+^count
+
+@1_sec_beep => ?buzzer
+~ startCount
+if ?buzzerbusy == 1
+^count = ^count + 1
+goto startCount
+endif
+]
+
+[
+wait
+^sec
+^temp
+^counts
+
+^temp = ^sec
+^counts = 0
+~ mult
+
+if ^temp > 0
+^temp = ^temp - 1
+^counts = ^counts + @time1sec_count
+goto mult
+endif
+
+
+
+~ looping
+if ^counts > 0
+^counts = ^counts - 1
+goto looping
+endif
+
+]
+
+[
+digit
+^num
+^out
+if ^num == 0
+    ^out = @zero_char
+    goto end
+endif
+if ^num == 1
+    ^out = @one_char
+    goto end
+endif
+if ^num == 2
+    ^out = @two_char
+    goto end
+endif
+if ^num == 3
+    ^out = @three_char
+    goto end
+endif
+if ^num == 4
+    ^out = @four_char
+    goto end
+endif
+if ^num == 5
+    ^out = @five_char
+    goto end
+endif
+if ^num == 6
+    ^out = @six_char
+    goto end
+endif
+if ^num == 7
+    ^out = @seven_char
+    goto end
+endif
+if ^num == 8
+    ^out = @eight_char
+    goto end
+endif
+if ^num == 9
+    ^out = @nine_char
+    goto end
+endif
+
+~ end
+]
+[
+display_num
+^num
+^copy
+^copy = ^num
+^10ks
+^1ks
+^hs
+^ts
+^10kprinted
+^1kprinted
+^hprinted
+
+
+^10kprinted = 0
+^1kprinted = 0
+^hprinted = 0
+
+
+^10ks = 0
+^1ks = 0
+^hs = 0
+^ts = 0
+@zero => ?digit4
+@zero => ?digit3
+@zero => ?digit2
+@zero => ?digit1
+@zero => ?digit0
+if ^copy > 9999
+    ~ 10kloop
+    ^10ks = ^10ks + 1
+    ^copy = ^copy - 10000
+    if ^copy > 10000
+        goto 10kloop
+    endif
+@digit_num = ^10ks
+:digit
+@digit_out => ?digit4
+^10kprinted = 1
+
+endif
+
+if ^10kprinted == 1
+@zero_char => ?digit3
+^1kprinted = 1
+endif
+if ^copy > 999
+    ~ 1kloop
+    ^1ks = ^1ks + 1
+    ^copy = ^copy - 1000
+    if ^copy > 1000
+        goto 1kloop
+    endif
+@digit_num = ^1ks
+:digit
+@digit_out => ?digit3
+^1kprinted = 1
+endif
+
+if ^1kprinted == 1
+@zero_char => ?digit2
+^hprinted = 1
+endif
+
+if ^copy > 99
+    ~ hsloop
+    ^hs = ^hs + 1
+    ^copy = ^copy - 100
+    if ^copy > 100
+        goto hsloop
+    endif
+@digit_num = ^hs
+:digit
+@digit_out => ?digit2
+^hprinted = 1
+endif
+
+if ^hprinted == 1
+@zero_char => ?digit1
+endif
+
+if ^copy > 9
+    ~ tsloop
+    ^ts = ^ts + 1
+    ^copy = ^copy - 10
+    if ^copy > 10
+        goto tsloop
+    endif
+
+
+
+@digit_num = ^ts
+:digit
+@digit_out => ?digit1
+
+endif
+
+@digit_num = ^copy
+:digit
+@digit_out => ?digit0
+
+
+
+]
+
+[
+random
+^max
+^out
+
+^out = @randseed1 + @randseed2
+~ modloop
+if ^out > ^max
+^out = ^out - ^max
+goto modloop
+endif
+@randseed1 = @randseed2
+@randseed2 = ^out
+
+
+]
+
+%randseed1 676
+%randseed2 4200
+
+@wait_sec = 1
+@random_max = 10000
+
+:time1sec
+@randseed1 = @randseed1 + @time1sec_count
+
+~ mainloop
+:random
+@display_num_num = @random_out
+:display_num
+:wait
+goto mainloop
+
+
+
+%zero
+%1_sec_beep 35392
+
+
